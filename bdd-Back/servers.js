@@ -7,12 +7,13 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 
-const saltRounds = 10
+const saltRounds = procces.env.Salt
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
+const BDD = proccess.env.BDD
 
 const usersSchema = new mongoose.Schema({ username: String, mdp: String, email: String });
 
@@ -90,7 +91,7 @@ app.put("/users", function(req,res){
 
 
 
-mongoose.connect("mongodb://localhost:27017/BddPortfolio");
+mongoose.connect(BDD);
 http.listen(PORT, function () {
   console.log(`Le serveur express est en route sur le port: ${PORT}`);
 });
